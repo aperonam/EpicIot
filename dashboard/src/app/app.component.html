@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <span style="margin: 0 auto">
+    Epic ambient dashboard
+  </span>
+</mat-toolbar>
+<mat-grid-list class="cards-container" gutterSize="50px" rowHeight="360px" cols="3" cdkDropListGroup>
+  <mat-grid-tile cdkDropList [cdkDropListData]="i" class="card mat-elevation-z"
+                 *ngFor="let card of cardsConfig; let i = index"
+                 cdkDrag [cdkDragData]="i" (cdkDragDropped)="drop($event)"
+                 colspan="{{card.colspan}}"
+  >
+    <app-card-factory [config]="card">
+    </app-card-factory>
+  </mat-grid-tile>
+</mat-grid-list>
+<!--</div><div cdkDropListGroup class="cards-container">-->
+<!--  <div cdkDropList [cdkDropListData]="i" class="card mat-elevation-z"-->
+<!--       *ngFor="let card of cardsConfig; let i = index"-->
+<!--       cdkDrag [cdkDragData]="i" (cdkDragDropped)="drop($event)"-->
+<!--  >-->
+<!--    <app-card-factory  [config]="card">-->
+<!--    </app-card-factory>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<router-outlet></router-outlet>

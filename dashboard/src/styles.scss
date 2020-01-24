@@ -1,0 +1,72 @@
+@import '~@angular/material/theming';
+@import 'assets/themes/theme';
+@import 'app/cards/card-base';
+
+
+@include mat-core();
+
+@font-face {
+  font-family: bellerose;
+  src: url(assets/bellerose/Bellerose.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: bebas_neue;
+  src: url(assets/bebas_neue/bebas_neue.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: topazia;
+  src: url(assets/topazia/topazia.otf) format("truetype");
+}
+
+
+@font-face {
+  font-family: caviar_dreams;
+  src: url(assets/caviar_dreams/caviar_dreams.ttf) format("truetype");
+}
+
+html {
+}
+
+// Styles begin here
+html, body {
+  min-height: 100%;
+  font-family: caviar_dreams, 'arial', sans-serif !important;
+  min-width: 370px;
+
+}
+
+body {
+  margin: 0;
+}
+
+app-card-factory {
+  width: 100%;
+  height: 100%;
+}
+
+.mat-toolbar {
+  font-family: caviar_dreams, 'arial', sans-serif !important;
+  font-size: xx-large;
+  font-weight: bold;
+  @include mat-elevation(18, black, 1);
+  min-height: 90px !important;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  color: mat-color($dashboard-accent, 800) !important;
+
+}
+
+.cards-container {
+  //display: flex;
+  //flex-wrap: wrap;
+  //align-items: center;
+  //justify-content: space-evenly;
+
+  width: 95%;
+  margin: 3% auto;
+}
+
+

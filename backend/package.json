@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Data collector for IoT sensors",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dale",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/bigquery": "^4.6.1",
+    "express": "^4.17.1",
+    "influx": "^5.5.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "tslint": "^6.0.0",
+    "typescript": "^3.7.5"
+  }
+}

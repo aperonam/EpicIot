@@ -1,0 +1,33 @@
+@import 'big-number-card/big-number-card.component';
+@import 'big-number-card-2-spaces/big-number-card-2-spaces.component';
+
+.card {
+
+  background-color: mat-color($dashboard-accent, 700);
+  display: flex;
+  @include mat-elevation(24, black, 1);
+  border-radius: 10px;
+}
+
+
+.sensor-icon {
+  //filter: invert(61%) sepia(100%) saturate(269%) hue-rotate(45deg) brightness(98%) contrast(85%);
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.card-header {
+
+  font-size: 60px;
+  height: 25%;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  font-weight: bold;
+  color: mat-color($dashboard-primary, 600)
+
+
+}

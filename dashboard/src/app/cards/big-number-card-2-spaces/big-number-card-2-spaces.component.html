@@ -1,0 +1,11 @@
+<div class="card-container">
+  <div class="card-header">
+    {{data.title}}
+  </div>
+  <div class="card-body">
+    <img class="sensor-icon" [src]="'assets/images/' + data.extraData['assetName']">
+    <ng-container *ngFor="let value of values">
+      {{value}}
+    </ng-container>
+  </div>
+</div>

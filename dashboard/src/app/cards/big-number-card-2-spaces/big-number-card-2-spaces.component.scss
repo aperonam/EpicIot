@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+@import '../../../assets/themes/theme';
+
+
+app-big-number-card-2 {
+  .card-container {
+    height: 90%;
+  }
+
+  .card-body {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    font-size: 100px;
+    height: 75%;
+    font-weight: bolder;
+    color: mat-color($dashboard-primary, 600)
+  }
+
+  .sensor-icon {
+    width: 60px;
+  }
+
+}
+
+
+
