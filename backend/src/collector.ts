@@ -7,7 +7,6 @@ class Collector {
     private bigQueryClient: BigQuery;
 
     constructor() {
-        console.log("influx", Influx);
         this.bigQueryClient = new BigQuery({
             projectId: "poised-ceiling-202111",
             keyFilename: "./src/credentials.json",
