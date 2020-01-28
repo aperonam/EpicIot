@@ -61,17 +61,16 @@ class Collector {
             }]);
     }
 
-    private async getLastRecordFromDB(sensorId: string): Promise<Influx.IResults<unknown>> {
+    public async getLastValueFromDB(sensorId: string, type:string): Promise<Influx.IResults<unknown>> {
         const currentTime: number = Math.floor(Date.now() / 1000);
         return await this.influxDB.query(
-            `SELECT LAST(*) FROM sensor_data where sensor_id ='${sensorId}'`);
+            `SELECT LAST(*) FROM sensor_data where sensor_id ='${sensorId}' AND type='${type}'`);
 
     }
-    private async getAllRecordsFromDB(): Promise<Influx.IResults<unknown>> {
+    public async getAllRecordsFromDB(): Promise<Influx.IResults<unknown>> {
         const currentTime: number = Math.floor(Date.now() / 1000);
         return await this.influxDB.query(
             `SELECT * FROM sensor_data`);
-
     }
 
     private async startInflux() {
@@ -102,8 +101,8 @@ class Collector {
         // this.uploadToBigQuery();
         this.savetoDB({
             sensor_id: 2,
-            type: "temperature",
-            value: 14
+            type: "humidity",
+            value: 40
         })
     }
 
