@@ -1,4 +1,4 @@
-import {BigQuery} from "@google-cloud/bigquery";
+import { BigQuery } from "@google-cloud/bigquery";
 import * as Influx from "influx";
 
 class Collector {
@@ -26,7 +26,7 @@ class Collector {
         const datasetId = "sensor_data";
         const tableId = "sensor_data_table";
 
-        const records = await this.getLastRecordsFromDB(0);
+        const records = await this.getAllRecordsFromDB();
         if (records.length === 0) {
             return;
         }
@@ -56,20 +56,21 @@ class Collector {
         await this.influxDB.writePoints([
             {
                 measurement: "sensor_data",
-                tags: {sensor_id: data.sensor_id},
-                fields: {type: data.type, value: data.value, timestamp: Date.now()},
+                tags: { sensor_id: data.sensor_id },
+                fields: { type: data.type, value: data.value, timestamp: Date.now() },
             }]);
-        const latestRecords = await this.getLastRecordsFromDB(0);
-        console.log("latest records are: ", latestRecords.length);
-
-
     }
 
-    private async getLastRecordsFromDB(timeBack: number): Promise<Influx.IResults<unknown>> {
+    private async getLastRecordFromDB(sensorId: string): Promise<Influx.IResults<unknown>> {
         const currentTime: number = Math.floor(Date.now() / 1000);
-        console.log("Timeback = ", currentTime - timeBack);
         return await this.influxDB.query(
-                `SELECT *  FROM sensor_data where timestamp > '1579880628505'  `);
+            `SELECT LAST(*) FROM sensor_data where sensor_id ='${sensorId}'`);
+
+    }
+    private async getAllRecordsFromDB(): Promise<Influx.IResults<unknown>> {
+        const currentTime: number = Math.floor(Date.now() / 1000);
+        return await this.influxDB.query(
+            `SELECT * FROM sensor_data`);
 
     }
 
@@ -99,6 +100,11 @@ class Collector {
             await this.influxDB.createDatabase(influxConfig.database);
         }
         // this.uploadToBigQuery();
+        this.savetoDB({
+            sensor_id: 2,
+            type: "temperature",
+            value: 14
+        })
     }
 
 }
